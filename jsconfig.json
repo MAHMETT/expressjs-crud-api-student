@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json.schemastore.org/jsconfig",
+    "compilerOptions": {
+        "target": "ES2024",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "checkJs": true,
+        "baseUrl": "src",
+        "paths": {
+            "*": ["*"]
+        }
+    },
+    "exclude": ["node_modules"]
+}
