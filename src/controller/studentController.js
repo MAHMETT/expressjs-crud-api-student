@@ -57,11 +57,13 @@ const addData = async (req, res) => {
         });
         if (error) {
             return res.status(HTTP_RESPONSE.R400.BAD_REQUEST).json({
+                status: HTTP_RESPONSE.R400.BAD_REQUEST,
                 message: error.details[0].message,
             });
         }
         if (dataExist) {
             return res.status(HTTP_RESPONSE.R400.BAD_REQUEST).json({
+                status: HTTP_RESPONSE.R400.BAD_REQUEST,
                 message: responseDefault.failed.DATA_EXIST,
             });
         }
@@ -95,12 +97,13 @@ const updateData = async (req, res) => {
             const nisExist = await studentModel.findOne({
                 nis: nis,
             });
-            if (nisExist) {
+            if (!nisExist) {
                 return res.status(HTTP_RESPONSE.R400.BAD_REQUEST).json({
+                    status: HTTP_RESPONSE.R400.BAD_REQUEST,
                     message: responseDefault.failed.NIS_EXIST,
                 });
             }
-            if (!nisExist) {
+            if (nisExist) {
                 const response = await studentModel.findByIdAndUpdate(
                     { _id: id },
                     { $set: body },

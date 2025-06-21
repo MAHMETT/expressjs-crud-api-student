@@ -11,9 +11,9 @@ const route = express.Router();
 
 route.post('/addData', addData);
 route.get('/', getData);
-route.get('/student/nis/:nis', getDataByNis);
-route.get('/student/:id', getDataById);
-route.put('/student/edit/:id', updateData);
-route.delete('/student/delete/:id', deleteData);
+route.get('/nis/:nis', getDataByNis);
+route.get('/:id', getDataById);
+route.put('/edit/:id', updateData);
+route.delete('/delete/:id', deleteData);
 
 module.exports = route;
